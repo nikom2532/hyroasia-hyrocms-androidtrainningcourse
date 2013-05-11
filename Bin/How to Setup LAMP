@@ -1,0 +1,90 @@
+How to install the PHP MySQL on Debian Linux
+
+open Terminal
+
+
+1. Install Apache
+
+sudo apt-get install apache2
+sudo apt-get install php5 libapache2-mod-php5
+sudo /etc/init.d/apache2 restart
+
+______________________________
+
+2. Install PHP
+
+Step 1. Again open up the Terminal (Applications > Accessories > Terminal).
+
+Step 2. Copy/Paste the following line into Terminal and press enter:
+
+sudo apt-get install php5 libapache2-mod-php5
+
+Step 3. In order for PHP to work and be compatible with Apache we must restart it. Type the following code in Terminal to do this:
+
+sudo /etc/init.d/apache2 restart
+
+_______________________________
+
+3. Install MySQL
+
+
+To finish this guide up we will install MySQL. (Note - Out of Apache and PHP, MySQL is the most difficult to set up. I will provide some great resources for anyone having trouble at the end of this guide.)
+
+
+Step 1. Once again open up the amazing Terminal and then copy/paste this line:
+
+sudo apt-get install mysql-server
+
+
+Step 2 (optional). In order for other computers on your network to view the server you have created, you must first edit the "Bind Address". Begin by opening up Terminal to edit the my.cnf file.
+
+gksudo gedit /etc/mysql/my.cnf
+
+Change the line
+
+bind-address = 127.0.0.1
+
+And change the 127.0.0.1 to your IP address.
+
+
+Step 3. This is where things may start to get tricky. Begin by typing the following into Terminal:
+
+mysql -u root
+
+Following that copy/paste this line:
+
+mysql> SET PASSWORD FOR 'root'@'localhost' = PASSWORD('yourpassword');
+
+(Make sure to change yourpassword to a password of your choice.)
+
+
+Step 4. We are now going to install a program called phpMyAdmin which is an easy tool to edit your databases. Copy/paste the following line into Terminal:
+
+sudo apt-get install libapache2-mod-auth-mysql php5-mysql phpmyadmin
+
+After that is installed our next task is to get PHP to work with MySQL. To do this we will need to open a file entitled php.ini. To open it type the following:
+
+
+gksudo gedit /etc/php5/apache2/php.ini
+
+
+Now we are going to have to uncomment the following line by taking out the semicolon (;).
+
+Change this line:
+
+;extension=mysql.so
+
+To look like this:
+
+extension=mysql.so
+
+_______________________________
+
+See More Detail Here
+
+http://www.howtoforge.com/ubuntu_lamp_for_newbies
+
+___
+By
+Arming Huang
+nikom.s@hyroasia.com

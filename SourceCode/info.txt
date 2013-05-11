@@ -1,0 +1,9 @@
+web server
+http://localhost:83
+
+mysql
+id: wordpress
+pass: wordpress
+mysql host: http://localhost
+
+
